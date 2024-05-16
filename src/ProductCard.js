@@ -1,6 +1,6 @@
 // ProductCard.js
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useWeb3Context } from './Web3Context';
 import './ProductCard.css';
 const ProductCard = ({ product }) => {
@@ -8,25 +8,19 @@ const ProductCard = ({ product }) => {
 
   const { mintNFT, NFTInfo } = useWeb3Context()
 
-  const [info, setInfo] = useState({})
-
-  // useEffect(() => {
-  //   NFTInfo(contract_addr, contract_abi)
-  //     .then(info => setInfo(info))
-  // }, [])
 
   const handleBuyNow = () => {
-    alert(`Purchased ${product.title} for ${product.price} ETH`);
+    alert(`Are you sure to purchased ${product.title} for ${product.price} ETH ? `);
     mintNFT(price, contract_addr, contract_abi);
   };
 
   return (
     <div className="product-card">
-      <img className="product-image" src={product.image} alt={product.title} />
+      <img className="product-image" src={image} alt={title} />
       <div className="product-details">
-        <h3>{product.title}</h3>
-        <p>Price: {product.price} ETH</p>
-        <button onClick={handleBuyNow}>Buy Now</button>
+        <h3>{title}</h3>
+        <p>Price: {price} ETH</p>
+        <button onClick={handleBuyNow}>Purchase Now</button>
       </div>
     </div>
   );
